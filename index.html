@@ -71,7 +71,10 @@
         }
         .btn:hover { opacity: 0.9; }
 
-        /* Панель вкладок */
+        /* СКРЫТЫЕ ПЕРЕКЛЮЧАТЕЛИ ДЛЯ ВКЛАДОК */
+        .tab-switch { display: none; }
+
+        /* МЕНЮ ВКЛАДОК */
         .tabs-menu {
             display: flex;
             gap: 8px;
@@ -81,11 +84,9 @@
             margin-bottom: 20px;
             border: 1px solid #2f3e46;
         }
-        .tab-button {
+        .tab-label {
             flex: 1;
             padding: 12px 5px;
-            background: none;
-            border: none;
             color: #888;
             font-weight: bold;
             font-size: 13px;
@@ -96,19 +97,26 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
+            text-align: center;
         }
-        .tab-button.active {
+
+        /* МАГИЯ ПЕРЕКЛЮЧЕНИЯ СТИЛЕЙ КНОПОК */
+        #tab1:checked ~ .tabs-menu .lbl-faq,
+        #tab2:checked ~ .tabs-menu .lbl-weapons,
+        #tab3:checked ~ .tabs-menu .lbl-map {
             background: var(--container-bg);
             color: var(--text-color);
             border: 1px solid #2f3e46;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        /* Контент разделов */
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
+        /* КОНТЕНТ РАЗДЕЛОВ */
+        .tab-content { display: none; }
+
+        /* МАГИЯ ПОКАЗА НУЖНОГО РАЗДЕЛА */
+        #tab1:checked ~ #page-faq,
+        #tab2:checked ~ #page-weapons,
+        #tab3:checked ~ #page-map {
             display: block;
         }
 
@@ -123,16 +131,8 @@
             letter-spacing: 1px;
         }
         
-        /* Стили развернутого текста */
-        .qa-item {
-            margin-bottom: 25px;
-        }
-        .question { 
-            font-weight: bold; 
-            color: var(--accent-color); 
-            margin-bottom: 8px; 
-            font-size: 16px; 
-        }
+        .qa-item { margin-bottom: 25px; }
+        .question { font-weight: bold; color: var(--accent-color); margin-bottom: 8px; font-size: 16px; }
         .answer-line { 
             color: #e0e0e0; 
             line-height: 1.6; 
@@ -161,27 +161,32 @@
 
     <!-- СОЦСЕТИ -->
     <div class="social-links">
-        <a href="https://t.me/rikovkd" target="_blank" class="btn btn-tg">Telegram</a>
+        <a href="https://t.me" target="_blank" class="btn btn-tg">Telegram</a>
         <a href="https://discord.gg" target="_blank" class="btn btn-ds">Discord</a>
         <a href="https://tiktok.com" target="_blank" class="btn btn-tt">TikTok</a>
     </div>
     <a href="#" class="btn btn-download">📥 Скачать сборку (В разработке)</a>
 
+    <!-- ЧЕКБОКСЫ ДЛЯ УПРАВЛЕНИЯ СТРАНИЦАМИ БЕЗ JS -->
+    <input type="radio" name="pages" id="tab1" class="tab-switch" checked>
+    <input type="radio" name="pages" id="tab2" class="tab-switch">
+    <input type="radio" name="pages" id="tab3" class="tab-switch">
+
     <!-- ВЫБОР СТРАНИЦЫ -->
     <div class="tabs-menu">
-        <button class="tab-button active" id="btn-faq" onclick="switchPage('faq')">
+        <label for="tab1" class="tab-label lbl-faq">
             <span>❓</span><span>FAQ</span>
-        </button>
-        <button class="tab-button" id="btn-weapons" onclick="switchPage('weapons')">
+        </label>
+        <label for="tab2" class="tab-label lbl-weapons">
             <span>🛡️</span><span>Оружие</span>
-        </button>
-        <button class="tab-button" id="btn-map" onclick="switchPage('map')">
+        </label>
+        <label for="tab3" class="tab-label lbl-map">
             <span>🗺️</span><span>Карта</span>
-        </button>
+        </label>
     </div>
 
     <!-- СТРАНИЦА: FAQ -->
-    <div id="page-faq" class="tab-content active">
+    <div id="page-faq" class="tab-content">
         <div class="section-title">📢 Важная информация для игроков</div>
         
         <div class="qa-item">
@@ -255,14 +260,4 @@
     <div id="page-map" class="tab-content">
         <div class="section-title">🗺️ Тактическая Карта секторов</div>
         <div class="info-box">
-            <p><strong>🛰️ Спутниковая связь настраивается...</strong></p>
-            <p>В этом разделе будет загружена интерактивная карта игровых зон. Вы сможете координировать действия своего отряда и планировать захват территорий прямо через сайт.</p>
-        </div>
-    </div>
-
-    <footer>
-        © MWC: Eastern Direction | База знаний обновляется в реальном времени.
-    </footer>
-</div>
-
-    
+            
