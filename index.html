@@ -36,7 +36,6 @@
         h1 { text-align: center; color: var(--text-color); margin: 5px 0; font-size: 24px; }
         .subtitle { text-align: center; color: #888; font-size: 13px; margin-bottom: 20px; }
         
-        /* Соцсети */
         .social-links {
             display: flex;
             gap: 8px;
@@ -71,10 +70,9 @@
         }
         .btn:hover { opacity: 0.9; }
 
-        /* СКРЫТЫЕ ПЕРЕКЛЮЧАТЕЛИ ДЛЯ ВКЛАДОК */
-        .tab-switch { display: none; }
+        /* УПРАВЛЕНИЕ ВКЛАДКАМИ ЧЕРЕЗ СТИЛИ */
+        .tab-switch { display: none !important; }
 
-        /* МЕНЮ ВКЛАДОК */
         .tabs-menu {
             display: flex;
             gap: 8px;
@@ -100,24 +98,23 @@
             text-align: center;
         }
 
-        /* МАГИЯ ПЕРЕКЛЮЧЕНИЯ СТИЛЕЙ КНОПОК */
+        /* ПОДСВЕТКА АКТИВНОЙ КНОПКИ */
         #tab1:checked ~ .tabs-menu .lbl-faq,
         #tab2:checked ~ .tabs-menu .lbl-weapons,
         #tab3:checked ~ .tabs-menu .lbl-map {
-            background: var(--container-bg);
-            color: var(--text-color);
-            border: 1px solid #2f3e46;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            background: var(--container-bg) !important;
+            color: var(--text-color) !important;
+            border: 1px solid #2f3e46 !important;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
         }
 
-        /* КОНТЕНТ РАЗДЕЛОВ */
-        .tab-content { display: none; }
+        /* СТИЛЬ СКРЫТИЯ И ПОКАЗА СТРАНИЦ */
+        .tab-content { display: none !important; }
 
-        /* МАГИЯ ПОКАЗА НУЖНОГО РАЗДЕЛА */
         #tab1:checked ~ #page-faq,
         #tab2:checked ~ #page-weapons,
         #tab3:checked ~ #page-map {
-            display: block;
+            display: block !important;
         }
 
         .section-title {
@@ -167,12 +164,12 @@
     </div>
     <a href="#" class="btn btn-download">📥 Скачать сборку (В разработке)</a>
 
-    <!-- ЧЕКБОКСЫ ДЛЯ УПРАВЛЕНИЯ СТРАНИЦАМИ БЕЗ JS -->
+    <!-- ПЕРЕКЛЮЧАТЕЛИ СТРАНИЦ -->
     <input type="radio" name="pages" id="tab1" class="tab-switch" checked>
     <input type="radio" name="pages" id="tab2" class="tab-switch">
     <input type="radio" name="pages" id="tab3" class="tab-switch">
 
-    <!-- ВЫБОР СТРАНИЦЫ -->
+    <!-- МЕНЮ ВКЛАДОК -->
     <div class="tabs-menu">
         <label for="tab1" class="tab-label lbl-faq">
             <span>❓</span><span>FAQ</span>
