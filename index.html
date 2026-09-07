@@ -5,34 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MWC: Eastern Direction — Вопросы и ответы</title>
     <style>
-        body {
-            background-color: #0d0e11;
-            color: #ffffff;
-            font-family: sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        :root {
+            --bg-color: #0d0e11;
+            --panel-bg: #14161d;
+            --accent-color: #ff9f43;
+            --text-main: #ffffff;
+            --text-muted: #8a8f98;
         }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Наша верхняя тактическая шапка */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #14161d;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .logo span { color: var(--accent-color); }
+
+        /* Меню вкладок */
+        .nav-tabs {
+            display: flex;
+            gap: 30px;
+        }
+
+        /* Стиль для нашей первой кнопки меню */
+        .tab-btn {
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            padding-bottom: 4px;
+            border: none;
+            background: none;
+            border-bottom: 2px solid var(--accent-color); /* Сразу подсвечена, так как пока одна */
+            cursor: pointer;
+        }
+
+        /* Контейнер для вопросов (центрирует контент) */
+        .main-container {
+            max-width: 800px;
+            width: 100%;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
         h1 {
-            color: #ff9f43;
-            border-bottom: 2px solid #ff9f43;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
             padding-bottom: 10px;
             margin-bottom: 30px;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+
         .faq-item {
             margin-bottom: 25px;
-            background: #14161d;
+            background: var(--panel-bg);
             padding: 20px;
-            border-left: 4px solid #ff9f43;
+            border-left: 4px solid var(--accent-color);
         }
+
         .question {
             font-weight: bold;
             font-size: 18px;
-            color: #ff9f43;
+            color: var(--accent-color);
             margin-bottom: 8px;
         }
+
         .answer {
-            color: #8a8f98;
+            color: var(--text-muted);
             font-size: 15px;
             line-height: 1.5;
         }
@@ -40,41 +107,54 @@
 </head>
 <body>
 
-    <h1>MWC: Eastern Direction — Часто задаваемые вопросы</h1>
+    <!-- Вставляем верхнюю панель -->
+    <header>
+        <div class="logo">MWC: <span>Eastern Direction</span></div>
+        <nav class="nav-tabs">
+            <button class="tab-btn">FAQ</button>
+        </nav>
+    </header>
 
-    <div class="faq-item">
-        <div class="question">Сервер платный? Сколько будет стоить проходка?</div>
-        <div class="answer">Нет, сервер полностью бесплатный.</div>
-    </div>
+    <!-- Основной контент сайта ниже шапки -->
+    <div class="main-container">
 
-    <div class="faq-item">
-        <div class="question">Какие фракции будут?</div>
-        <div class="answer">Пока что неизвестно, планируется ЧВК, СНГ, НАТО.</div>
-    </div>
+        <h1>Часто задаваемые вопросы</h1>
 
-    <div class="faq-item">
-        <div class="question">Где скачать сборку?</div>
-        <div class="answer">Нигде, эта сборка делается для сервера.</div>
-    </div>
+        <div class="faq-item">
+            <div class="question">Сервер платный? Сколько будет стоить проходка?</div>
+            <div class="answer">Нет, сервер полностью бесплатный.</div>
+        </div>
 
-    <div class="faq-item">
-        <div class="question">Суть игры?</div>
-        <div class="answer">Захват зон в стилистике милсим Arma + Squad.</div>
-    </div>
+        <div class="faq-item">
+            <div class="question">Какие фракции будут?</div>
+            <div class="answer">Пока что неизвестно, планируется ЧВК, СНГ, НАТО.</div>
+        </div>
 
-    <div class="faq-item">
-        <div class="question">Будет лаунчер?</div>
-        <div class="answer">Да, будет. Надеемся, что к запуску уже сделаем все!</div>
-    </div>
+        <div class="faq-item">
+            <div class="question">Где скачать сборку?</div>
+            <div class="answer">Нигде, эта сборка делается для сервера.</div>
+        </div>
 
-    <div class="faq-item">
-        <div class="question">Как вам помочь?</div>
-        <div class="answer">Заходите в дискорд, мы почти каждый день сидим в голосовом канале.</div>
-    </div>
+        <div class="faq-item">
+            <div class="question">Суть игры?</div>
+            <div class="answer">Захват зон в стилистике милсим Arma + Squad.</div>
+        </div>
 
-    <div class="faq-item">
-        <div class="question">Есть ли ограничения по возрасту (набор в проект)?</div>
-        <div class="answer">Строгого ограничения нет, но мы ценим адекватность, умение слушать командира и соблюдать субординацию во время сессий. Каждый боец проходит индивидуальное собеседование.</div>
+        <div class="faq-item">
+            <div class="question">Будет лаунчер?</div>
+            <div class="answer">Да, будет. Надеемся, что к запуску уже сделаем все!</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Как вам помочь?</div>
+            <div class="answer">Заходите в дискорд, мы почти каждый день сидим в голосовом канале.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Есть ли ограничения по возрасту (набор в проект)?</div>
+            <div class="answer">Строгого ограничения нет, но мы ценим адекватность, умение слушать командира и соблюдать субординацию во время сессий. Каждый боец проходит индивидуальное собеседование.</div>
+        </div>
+
     </div>
 
 </body>
