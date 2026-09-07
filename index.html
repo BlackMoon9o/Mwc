@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MWC: Eastern Direction — Тактический Милсим</title>
-    <!-- Подключаем брутальный шрифт в стиле милитари-HUD -->
+    <!-- Подключаем шрифты -->
     <link href="https://googleapis.com" rel="stylesheet">
     
     <style>
@@ -52,7 +52,7 @@
         }
         .logo span { color: var(--accent-color); }
 
-        /* Табы / Вкладки на чистом CSS */
+        /* Вкладки */
         .nav-tabs {
             display: flex;
             gap: 30px;
@@ -103,26 +103,12 @@
             fill: currentColor;
         }
 
-        .social-link.tg:hover {
-            color: #26a5e4;
-            background: rgba(38, 165, 228, 0.1);
-            border-color: #26a5e4;
-        }
+        .social-link.tg:hover { color: #26a5e4; background: rgba(38, 165, 228, 0.1); border-color: #26a5e4; }
+        .social-link.ds:hover { color: #5865F2; background: rgba(88, 101, 242, 0.1); border-color: #5865F2; }
+        .social-link.tt:hover { color: #ff0050; background: rgba(255, 0, 80, 0.1); border-color: #ff0050; }
 
-        .social-link.ds:hover {
-            color: #5865F2;
-            background: rgba(88, 101, 242, 0.1);
-            border-color: #5865F2;
-        }
-
-        .social-link.tt:hover {
-            color: #ff0050;
-            background: rgba(255, 0, 80, 0.1);
-            border-color: #ff0050;
-        }
-
-        /* Переключатели вкладок (скрытые) */
-        input[type="radio"] {
+        /* Скрытые переключатели */
+        input[type="radio"].tab-switch {
             display: none;
         }
 
@@ -138,15 +124,15 @@
             animation: fadeIn 0.4s ease forwards;
         }
 
-        /* Логика показа табов */
+        /* Полностью переписанная CSS логика отображения вкладок */
         #tab-main:checked ~ .main-container #content-main,
         #tab-weapons:checked ~ .main-container #content-weapons,
         #tab-map:checked ~ .main-container #content-map,
         #tab-faq:checked ~ .main-container #content-faq {
-            display: block;
+            display: block !important;
         }
 
-        /* Активные стили для меню */
+        /* Подсветка активной вкладки в хэдере */
         #tab-main:checked ~ header label[for="tab-main"],
         #tab-weapons:checked ~ header label[for="tab-weapons"],
         #tab-map:checked ~ header label[for="tab-map"],
@@ -158,9 +144,8 @@
         /* Сетка Главного экрана */
         .hero-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            grid-template-columns: 1fr;
+            gap: 40px;
             margin-bottom: 60px;
         }
 
@@ -169,19 +154,27 @@
             font-size: 72px;
             text-transform: uppercase;
             line-height: 0.9;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             letter-spacing: -1px;
         }
 
-        .hero-left p {
+        .hero-left .description {
             color: var(--text-muted);
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            max-width: 450px;
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 850px;
         }
 
-        /* Блоки с информацией в FAQ */
+        .hero-left .description p {
+            margin-bottom: 15px;
+        }
+
+        .hero-left .description span {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Общие тактические панели информации */
         .info-panel {
             background: var(--panel-bg);
             padding: 40px;
@@ -194,13 +187,27 @@
             font-size: 28px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
+        /* Стили заглушек разработки */
+        .dev-notice {
+            font-family: var(--font-mono);
+            color: var(--accent-color);
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Сетка для вопросов */
         .faq-grid {
             display: flex;
             flex-direction: column;
             gap: 24px;
+            margin-top: 30px;
         }
 
         .faq-block h3 {
@@ -218,12 +225,6 @@
             line-height: 1.6;
         }
 
-        .placeholder-content {
-            background: var(--panel-bg);
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -232,11 +233,11 @@
 </head>
 <body>
 
-    <!-- Скрытые переключатели для CSS-табов -->
-    <input type="radio" name="site-tabs" id="tab-main" checked>
-    <input type="radio" name="site-tabs" id="tab-weapons">
-    <input type="radio" name="site-tabs" id="tab-map">
-    <input type="radio" name="site-tabs" id="tab-faq">
+    <!-- Переключатели вынесены в самый верх body перед всем кодом -->
+    <input type="radio" name="site-tabs" class="tab-switch" id="tab-main" checked>
+    <input type="radio" name="site-tabs" class="tab-switch" id="tab-weapons">
+    <input type="radio" name="site-tabs" class="tab-switch" id="tab-map">
+    <input type="radio" name="site-tabs" class="tab-switch" id="tab-faq">
 
     <!-- Хедер сайта -->
     <header>
@@ -264,10 +265,3 @@
     </header>
 
     <!-- Основной контейнер -->
-    <div class="main-container">
-        
-        <!-- Вкладка 1: Главная -->
-        <div class="tab-content" id="content-main">
-            <div class="hero-grid">
-                <div class="hero-left">
-                    <h1>В БОЙ</h1>
