@@ -32,7 +32,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            /* Накладываем затемнение и брутальный фон леса/тайги */
+            /* Затемнение и брутальный фон леса/тайги */
             background-image: linear-gradient(rgba(13, 14, 17, 0.8), rgba(13, 14, 17, 0.95)), url('https://unsplash.com');
             background-size: cover;
             background-position: center;
@@ -84,13 +84,13 @@
             color: var(--text-main);
         }
 
-        /* Подсвечиваем активную вкладку */
+        /* Подсвечиваем active вкладку */
         .tab-btn.active {
             color: var(--text-main);
             border-bottom: 2px solid var(--accent-color);
         }
 
-        /* Контейнер для контента */
+        /* Главный контейнер для контента */
         .main-container {
             max-width: 800px;
             width: 100%;
@@ -151,6 +151,31 @@
             letter-spacing: 1px;
             color: var(--text-main);
             margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Неактивная кнопка лаунчера */
+        .btn-disabled {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 159, 67, 0.2);
+            color: rgba(255, 255, 255, 0.4);
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 16px 36px;
+            border-radius: 4px;
+            text-decoration: none;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255, 159, 67, 0.15);
+            cursor: not-allowed;
+            user-select: none;
+        }
+
+        .btn-disabled svg {
+            opacity: 0.4;
         }
 
         /* Стиль для заглушек разработки */
@@ -195,6 +220,10 @@
         <div class="tab-content active" id="content-main">
             <h1>Главная</h1>
             <div class="welcome-text">Присоединяйся к нам!</div>
+            <div class="btn-disabled">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                Скачать лаунчер (в разработке)
+            </div>
         </div>
 
         <!-- Вкладка: Оружие -->
@@ -218,55 +247,36 @@
         <!-- Вкладка: FAQ -->
         <div class="tab-content" id="content-faq">
             <h2>Часто задаваемые вопросы</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="question">Сервер платный? Сколько будет стоить проходка?</div>
+                    <div class="answer">Нет, сервер полностью бесплатный.</div>
+                </div>
 
-            <div class="faq-item">
-                <div class="question">Сервер платный? Сколько будет стоить проходка?</div>
-                <div class="answer">Нет, сервер полностью бесплатный.</div>
-            </div>
+                <div class="faq-item">
+                    <div class="question">Какие фракции будут?</div>
+                    <div class="answer">Пока что неизвестно, планируется ЧВК, СНГ, НАТО.</div>
+                </div>
 
-            <div class="faq-item">
-                <div class="question">Какие фракции будут?</div>
-                <div class="answer">Пока что неизвестно, планируется ЧВК, СНГ, НАТО.</div>
-            </div>
+                <div class="faq-item">
+                    <div class="question">Где скачать сборку?</div>
+                    <div class="answer">Нигде, эта сборка делается для сервера.</div>
+                </div>
 
-            <div class="faq-item">
-                <div class="question">Где скачать сборку?</div>
-                <div class="answer">Нигде, эта сборка делается для сервера.</div>
-            </div>
+                <div class="faq-item">
+                    <div class="question">Суть игры?</div>
+                    <div class="answer">Захват зон в стилистике милсим Arma + Squad.</div>
+                </div>
 
-            <div class="faq-item">
-                <div class="question">Суть игры?</div>
-                <div class="answer">Захват зон в стилистике милсим Arma + Squad.</div>
-            </div>
+                <div class="faq-item">
+                    <div class="question">Будет лаунчер?</div>
+                    <div class="answer">Да, будет. Надеемся, что к запуску уже сделаем все!</div>
+                </div>
 
-            <div class="faq-item">
-                <div class="question">Будет лаунчер?</div>
-                <div class="answer">Да, будет. Надеемся, что к запуску уже сделаем все!</div>
-            </div>
+                <div class="faq-item">
+                    <div class="question">Как вам помочь?</div>
+                    <div class="answer">Заходите в дискорд, мы почти каждый день сидим в голосовом канале.</div>
+                </div>
 
-            <div class="faq-item">
-                <div class="question">Как вам помочь?</div>
-                <div class="answer">Заходите в дискорд, мы почти каждый день сидим в голосовом канале.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="question">Есть ли ограничения по возрасту (набор в проект)?</div>
-                <div class="answer">Строгого ограничения нет, но мы ценим адекватность, умение слушать командира и соблюдать субординацию во время сессий. Каждый боец проходит индивидуальное собеседование.</div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Навигационный скрипт -->
-    <script>
-        function openTab(tabId, btn) {
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            
-            document.getElementById(tabId).classList.add('active');
-            btn.classList.add('active');
-        }
-    </script>
-
-</body>
-</html>
+                <div class="faq-item">
+                    <div class="question">Есть ли ограничения по возрасту (набор в проект)?</div>
