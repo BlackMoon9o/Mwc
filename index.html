@@ -32,7 +32,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            /* Атмосферный фон леса из лаунчера */
+            /* Фон леса из лаунчера */
             background-image: linear-gradient(rgba(13, 14, 17, 0.8), rgba(13, 14, 17, 0.95)), url('https://unsplash.com');
             background-size: cover;
             background-position: center;
@@ -48,9 +48,6 @@
             background: rgba(20, 22, 29, 0.95);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
         }
 
         .logo {
@@ -62,26 +59,32 @@
         }
         .logo span { color: var(--accent-color); }
 
-        /* Навигация по секциям (плавный скролл) */
+        /* Вкладки навигации */
         .nav-tabs {
             display: flex;
             gap: 30px;
         }
 
-        .nav-link {
+        .tab-btn {
             font-family: var(--font-display);
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-muted);
-            text-decoration: none;
             cursor: pointer;
             transition: color 0.3s;
             padding-bottom: 4px;
+            border: none;
+            background: none;
             border-bottom: 2px solid transparent;
         }
 
-        .nav-link:hover { color: var(--text-main); }
+        .tab-btn:hover { color: var(--text-main); }
+
+        .tab-btn.active {
+            color: var(--text-main);
+            border-bottom: 2px solid var(--accent-color);
+        }
 
         /* Блок иконок соцсетей */
         .social-icons {
@@ -119,9 +122,15 @@
             margin: 60px auto;
             padding: 0 20px;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 80px; /* Большой отступ между блоками для чистоты */
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         /* --- СЕТКА ДЛЯ ГЛАВНОГО ЭКРАНА --- */
@@ -130,6 +139,7 @@
             grid-template-columns: 1.1fr 0.9fr;
             gap: 60px;
             align-items: center;
+            margin-bottom: 80px;
         }
 
         @media (max-width: 900px) {
@@ -258,6 +268,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 24px;
+            margin-bottom: 80px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             padding-top: 40px;
         }
@@ -328,10 +339,5 @@
             background: var(--panel-bg);
             padding: 40px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-left: 4px solid var(--accent-color);
-            backdrop-filter: blur(10px);
-        }
-
-        .info-panel h2 {
-            font-family: var(--font-display);
-font-size: 28px;text-transform: uppercase;letter-spacing: 1px;margin-bottom: 20px;}.dev-notice {font-family: var(--font-mono);color: var(--accent-color);font-size: 15px;letter-spacing: 1px;text-transform: uppercase;}/* Сетка для вопросов FAQ */.faq-grid {display: flex;flex-direction: column;gap: 24px;margin-top: 30px;}.faq-block h3 {font-family: var(--font-display);font-size: 18px;text-transform: uppercase;color: var(--accent-color);margin-bottom: 6px;}.faq-block p {color: var(--text-muted);font-size: 14px;line-height: 1.6;}
+border-left: 4px solid var(--accent-color);backdrop-filter: blur(10px);}.info-panel h2 {font-family: var(--font-display);font-size: 28px;text-transform: uppercase;letter-spacing: 1px;margin-bottom: 20px;}.dev-notice {font-family: var(--font-mono);color: var(--accent-color);font-size: 15px;letter-spacing: 1px;text-transform: uppercase;}/* Сетка для вопросов FAQ */.faq-grid {display: flex;flex-direction: column;gap: 24px;margin-top: 30px;}.faq-block h3 {font-family: var(--font-display);font-size: 18px;text-transform: uppercase;color: var(--accent-color);margin-bottom: 6px;}.faq-block p {color: var(--text-muted);font-size: 14px;line-height: 1.6;}@keyframes fadeIn {from { opacity: 0; transform: translateY(10px); }to { opacity: 1; transform: translateY(0); }}
+        MWC: Eastern DirectionГлавнаяОружиеКартаFAQВ БОЙДобро пожаловать на MWC: Eastern Direction — сессионный тактический MilSim-сервер нового поколения, вобравший в себя лучшие элементы легендарных хардкорных симуляторов Squad и Arma.Наш игровой процесс построен вокруг динамичных сессий, ключевая задача в которых — глобальный захват и удержание стратегических зон. Каждая сессия — это полноценная военная операция, требующая от команд слаженной логистики, планирования и хладнокровия.Один файл, без установки. Наш тактический лаунчер сам автоматически скачает актуальную сборку милсим-модов, настроит рацию и запустит игру.Скачать для WindowsВерсия для LinuxКак начать 3 шага • 5 минут01Скачай и запусти лаунчерУстановка не требуется — это один исполняемый тактический файл.02Создай аккаунтНажми на нашего официального Telegram-бота @mwc_bot — создай уникальный аккаунт бойца по его простым подсказкам.03Войди и жми «ИГРАТЬ»Лаунчер сам в один клик скачает всю сборку, настроит сессионное подключение и будет держать её всегда обновлённой.[ L ]Лицензия не требуетсяСвой лаунчер и авторизация. Аккаунт создаётся через Telegram-бота за одну минуту.[ M ]Ставить моды не нужноВся сборка в автоматическом режиме скачивается, синхронизируется и обновляется прямо в клиенте.[ R ]Полный реализмСуровые правила MilSim в стиле Squad и Arma с полноценным сессионным захватом ключевых секторов.[ W ]Огромная картаГигантские масштабы проведения операций, свобода маневров и тактическое взаимодействие отрядов.ТребованияСистемаWindows 10/11 x64 или Linux x64Вооружение и ТТХ[ STATUS ] Данный раздел находится в разработке и будет дополняться разработчиками в будущем.Тактическая карта операций[ STATUS ] Данный раздел находится в разработке и будет дополняться разработчиками в будущем.Часто задаваемые вопросы[ Q ] Сервер платный? Сколько будет стоить проходка?[ A ] Нет, сервер полностью бесплатный.[ Q ] Какие фракции будут?[ A ] Пока что неизвестно, планируется ЧВК, СНГ, НАТО.[ Q ] Где скачать сборку?[ A ] Нигде, эта сборка делается исключительно для нашего сервера через лаунчер.[ Q ] Суть игры?[ A ] Сессионный захват зон в жесткой стилистике милсим Arma + Squad.[ Q ] Будет лаунчер?[ A ] Да, будет. Надеемся, что к запуску уже сделаем все![ Q ] Как вам помочь?[ A ] Заходите в Дискорд, мы почти каждый день сидим в голосовом канале.function openTab(tabId, btn) {document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));document.getElementById(tabId).classList.add('active');btn.classList.add('active');}
