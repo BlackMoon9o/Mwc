@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MWC: Eastern Direction — Тактический Милсим</title>
-    <!-- Подключаем брутальные шрифты -->
+    <!-- Подключаем шрифты -->
     <link href="https://googleapis.com" rel="stylesheet">
     
     <style>
@@ -99,8 +99,8 @@
             background: #e68a2e;
         }
 
-        /* Скрываем радио-кнопки переключения вкладок */
-        input[type="radio"].tab-switch {
+        /* Скрываем радио-кнопки */
+        input[type="radio"] {
             display: none;
         }
 
@@ -117,17 +117,17 @@
             animation: fadeIn 0.4s ease forwards;
         }
 
-        /* НАДЁЖНОЕ ПЕРЕКЛЮЧЕНИЕ ТАБОВ через селектор ~ */
+        /* ИСПРАВЛЕНО: Теперь переключение работает жестко по ID */
         #tab-main:checked ~ .main-container #content-main,
         #tab-weapons:checked ~ .main-container #content-weapons,
         #tab-map:checked ~ .main-container #content-map,
         #tab-donate:checked ~ .main-container #content-donate,
         #tab-faq:checked ~ .main-container #content-faq,
         #tab-questions:checked ~ .main-container #content-questions {
-            display: block;
+            display: block !important;
         }
 
-        /* Подсветка активной вкладки в меню */
+        /* Подсветка активной вкладки в хэдере */
         #tab-main:checked ~ header label[for="tab-main"],
         #tab-weapons:checked ~ header label[for="tab-weapons"],
         #tab-map:checked ~ header label[for="tab-map"],
