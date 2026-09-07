@@ -95,7 +95,7 @@
             display: block;
         }
 
-        h1 {
+        h1, h2 {
             color: var(--accent-color);
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 10px;
@@ -105,10 +105,10 @@
             letter-spacing: 1px;
         }
 
-        .faq-item {
+        .faq-item, .dev-panel {
             margin-bottom: 25px;
             background: var(--panel-bg);
-            padding: 20px;
+            padding: 25px;
             border-left: 4px solid var(--accent-color);
         }
 
@@ -125,7 +125,6 @@
             line-height: 1.5;
         }
 
-        /* Стиль приветственного текста на главной */
         .welcome-text {
             font-size: 32px;
             font-weight: bold;
@@ -133,6 +132,26 @@
             letter-spacing: 1px;
             color: var(--text-main);
             margin-top: 20px;
+        }
+
+        /* Стиль для заглушек разработки */
+        .status-tag {
+            display: inline-block;
+            background: rgba(255, 159, 67, 0.1);
+            color: var(--accent-color);
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 159, 67, 0.3);
+        }
+
+        .dev-panel p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -143,6 +162,8 @@
         <div class="logo">MWC: <span>Eastern Direction</span></div>
         <nav class="nav-tabs">
             <button class="tab-btn active" onclick="openTab('content-main', this)">Главная</button>
+            <button class="tab-btn" onclick="openTab('content-weapons', this)">Оружие</button>
+            <button class="tab-btn" onclick="openTab('content-map', this)">Карта</button>
             <button class="tab-btn" onclick="openTab('content-faq', this)">FAQ</button>
         </nav>
     </header>
@@ -150,13 +171,31 @@
     <!-- Основной контент сайта -->
     <div class="main-container">
 
-        <!-- Контент вкладки: Главная -->
+        <!-- Вкладка: Главная -->
         <div class="tab-content active" id="content-main">
             <h1>Главная</h1>
             <div class="welcome-text">Присоединяйся к нам!</div>
         </div>
 
-        <!-- Контент вкладки: FAQ -->
+        <!-- Вкладка: Оружие -->
+        <div class="tab-content" id="content-weapons">
+            <h2>Вооружение и Арсенал</h2>
+            <div class="dev-panel">
+                <div class="status-tag">[ SYSTEM STATUS: IN DEVELOPMENT ]</div>
+                <p>Данный раздел наполняется базами данных ТТХ, таблицами калибров и баллистическими картами. Дополняется в будущем разработчиками по мере готовности пака вооружения Восточного и Западного блоков.</p>
+            </div>
+        </div>
+
+        <!-- Вкладка: Карта -->
+        <div class="tab-content" id="content-map">
+            <h2>Тактическая Карта</h2>
+            <div class="dev-panel">
+                <div class="status-tag">[ SECURE LINK: LOADING... ]</div>
+                <p>Сектор проведения сессионных операций засекречен штабом. Раздел со спутниковыми снимками, координатной сеткой и зонами захвата дополняется в будущем разработчиками. Следите за брифингами.</p>
+            </div>
+        </div>
+
+        <!-- Вкладка: FAQ -->
         <div class="tab-content" id="content-faq">
             <h1>Часто задаваемые вопросы</h1>
 
@@ -198,15 +237,12 @@
 
     </div>
 
-    <!-- Чистый скрипт навигации без опечаток -->
+    <!-- Навигационный скрипт -->
     <script>
         function openTab(tabId, btn) {
-            /* Прячем все вкладки */
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            /* Сбрасываем подсветку со всех кнопок */
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             
-            /* Показываем нужную вкладку и подсвечиваем кликнутую кнопку */
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
         }
