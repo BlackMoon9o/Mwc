@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MWC: Eastern Direction — Тактический Милсим</title>
-    <!-- Подключаем брутальные шрифты, как на скриншоте лаунчера -->
     <link href="https://googleapis.com" rel="stylesheet">
     
     <style>
@@ -32,14 +31,12 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            /* Фон леса из лаунчера */
             background-image: linear-gradient(rgba(13, 14, 17, 0.8), rgba(13, 14, 17, 0.95)), url('https://unsplash.com');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
-        /* Шапка сайта */
         header {
             display: flex;
             justify-content: space-between;
@@ -59,7 +56,6 @@
         }
         .logo span { color: var(--accent-color); }
 
-        /* Вкладки навигации */
         .nav-tabs {
             display: flex;
             gap: 30px;
@@ -86,7 +82,6 @@
             border-bottom: 2px solid var(--accent-color);
         }
 
-        /* Блок иконок соцсетей */
         .social-icons {
             display: flex;
             align-items: center;
@@ -116,7 +111,6 @@
         .social-link.ds:hover { color: #5865F2; background: rgba(88, 101, 242, 0.1); border-color: #5865F2; }
         .social-link.tt:hover { color: #ff0050; background: rgba(255, 0, 80, 0.1); border-color: #ff0050; }
 
-        /* Главный контейнер сайта */
         .main-container {
             max-width: 1200px;
             margin: 60px auto;
@@ -133,7 +127,6 @@
             display: block;
         }
 
-        /* --- СЕТКА ДЛЯ ГЛАВНОГО ЭКРАНА --- */
         .hero-grid {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
@@ -146,7 +139,6 @@
             .hero-grid { grid-template-columns: 1fr; gap: 40px; }
         }
 
-        /* Левая часть: Описание и кнопка */
         .hero-left h1 {
             font-family: var(--font-display);
             font-size: 82px;
@@ -157,7 +149,7 @@
             letter-spacing: -1px;
         }
 
-        .hero-left .description {
+        .description {
             color: var(--text-muted);
             font-size: 15px;
             line-height: 1.6;
@@ -165,11 +157,11 @@
             max-width: 480px;
         }
 
-        .hero-left .description p {
+        .description p {
             margin-bottom: 15px;
         }
 
-        .hero-left .description span {
+        .description span {
             color: var(--accent-color);
             font-weight: 600;
         }
@@ -208,7 +200,6 @@
         }
         .alt-version:hover { color: #fff; border-color: #fff; }
 
-        /* Правая часть: Блок «Как начать» */
         .steps-panel {
             background: var(--panel-bg);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -263,7 +254,6 @@
         }
         .step-text span { color: var(--accent-color); font-weight: 600; }
 
-        /* --- НИЖНЯЯ СЕТКА ХАРАКТЕРИСТИК --- */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -299,7 +289,6 @@
             line-height: 1.6;
         }
 
-        /* --- БЛОК СИСТЕМНЫХ ТРЕБОВАНИЙ --- */
         .requirements-box {
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             padding-top: 40px;
@@ -334,10 +323,29 @@
             color: var(--text-muted);
         }
 
-        /* Стили панелей информации для Оружия/Карты/FAQ */
         .info-panel {
             background: var(--panel-bg);
             padding: 40px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-border-left: 4px solid var(--accent-color);backdrop-filter: blur(10px);}.info-panel h2 {font-family: var(--font-display);font-size: 28px;text-transform: uppercase;letter-spacing: 1px;margin-bottom: 20px;}.dev-notice {font-family: var(--font-mono);color: var(--accent-color);font-size: 15px;letter-spacing: 1px;text-transform: uppercase;}/* Сетка для вопросов FAQ */.faq-grid {display: flex;flex-direction: column;gap: 24px;margin-top: 30px;}.faq-block h3 {font-family: var(--font-display);font-size: 18px;text-transform: uppercase;color: var(--accent-color);margin-bottom: 6px;}.faq-block p {color: var(--text-muted);font-size: 14px;line-height: 1.6;}@keyframes fadeIn {from { opacity: 0; transform: translateY(10px); }to { opacity: 1; transform: translateY(0); }}
-        MWC: Eastern DirectionГлавнаяОружиеКартаFAQВ БОЙДобро пожаловать на MWC: Eastern Direction — сессионный тактический MilSim-сервер нового поколения, вобравший в себя лучшие элементы легендарных хардкорных симуляторов Squad и Arma.Наш игровой процесс построен вокруг динамичных сессий, ключевая задача в которых — глобальный захват и удержание стратегических зон. Каждая сессия — это полноценная военная операция, требующая от команд слаженной логистики, планирования и хладнокровия.Один файл, без установки. Наш тактический лаунчер сам автоматически скачает актуальную сборку милсим-модов, настроит рацию и запустит игру.Скачать для WindowsВерсия для LinuxКак начать 3 шага • 5 минут01Скачай и запусти лаунчерУстановка не требуется — это один исполняемый тактический файл.02Создай аккаунтНажми на нашего официального Telegram-бота @mwc_bot — создай уникальный аккаунт бойца по его простым подсказкам.03Войди и жми «ИГРАТЬ»Лаунчер сам в один клик скачает всю сборку, настроит сессионное подключение и будет держать её всегда обновлённой.[ L ]Лицензия не требуетсяСвой лаунчер и авторизация. Аккаунт создаётся через Telegram-бота за одну минуту.[ M ]Ставить моды не нужноВся сборка в автоматическом режиме скачивается, синхронизируется и обновляется прямо в клиенте.[ R ]Полный реализмСуровые правила MilSim в стиле Squad и Arma с полноценным сессионным захватом ключевых секторов.[ W ]Огромная картаГигантские масштабы проведения операций, свобода маневров и тактическое взаимодействие отрядов.ТребованияСистемаWindows 10/11 x64 или Linux x64Вооружение и ТТХ[ STATUS ] Данный раздел находится в разработке и будет дополняться разработчиками в будущем.Тактическая карта операций[ STATUS ] Данный раздел находится в разработке и будет дополняться разработчиками в будущем.Часто задаваемые вопросы[ Q ] Сервер платный? Сколько будет стоить проходка?[ A ] Нет, сервер полностью бесплатный.[ Q ] Какие фракции будут?[ A ] Пока что неизвестно, планируется ЧВК, СНГ, НАТО.[ Q ] Где скачать сборку?[ A ] Нигде, эта сборка делается исключительно для нашего сервера через лаунчер.[ Q ] Суть игры?[ A ] Сессионный захват зон в жесткой стилистике милсим Arma + Squad.[ Q ] Будет лаунчер?[ A ] Да, будет. Надеемся, что к запуску уже сделаем все![ Q ] Как вам помочь?[ A ] Заходите в Дискорд, мы почти каждый день сидим в голосовом канале.function openTab(tabId, btn) {document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));document.getElementById(tabId).classList.add('active');btn.classList.add('active');}
+            border-left: 4px solid var(--accent-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .info-panel h2 {
+            font-family: var(--font-display);
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .dev-notice {
+            font-family: var(--font-mono);
+            color: var(--accent-color);
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .faq-grid {
+            display: flex;
