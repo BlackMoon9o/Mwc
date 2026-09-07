@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MWC: Eastern Direction — Тактический Милсим</title>
+    <!-- Подключаем брутальные тактические шрифты -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    
     <style>
         :root {
             --bg-color: #0d0e11;
-            --panel-bg: #14161d;
+            --panel-bg: rgba(20, 22, 29, 0.85);
             --accent-color: #ff9f43;
             --text-main: #ffffff;
             --text-muted: #8a8f98;
+            --font-display: 'Oswald', sans-serif;
+            --font-mono: 'Share Tech Mono', monospace;
+            --font-sans: 'Montserrat', sans-serif;
         }
 
         * {
@@ -22,26 +28,33 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: sans-serif;
+            font-family: var(--font-sans);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            /* Накладываем затемнение и брутальный фон леса/тайги */
+            background-image: linear-gradient(rgba(13, 14, 17, 0.8), rgba(13, 14, 17, 0.95)), url('https://unsplash.com');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        /* Верхняя тактическая шапка */
+        /* Шапка сайта */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            background: #14161d;
+            background: rgba(20, 22, 29, 0.95);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
         }
 
         .logo {
-            font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 1px;
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
         .logo span { color: var(--accent-color); }
@@ -54,8 +67,8 @@
 
         /* Стиль для кнопок меню */
         .tab-btn {
+            font-family: var(--font-display);
             font-size: 14px;
-            font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-muted);
@@ -100,6 +113,7 @@
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 10px;
             margin-bottom: 30px;
+            font-family: var(--font-display);
             font-size: 24px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -110,13 +124,17 @@
             background: var(--panel-bg);
             padding: 25px;
             border-left: 4px solid var(--accent-color);
+            backdrop-filter: blur(5px);
         }
 
         .question {
+            font-family: var(--font-display);
             font-weight: bold;
             font-size: 18px;
             color: var(--accent-color);
             margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .answer {
@@ -126,7 +144,8 @@
         }
 
         .welcome-text {
-            font-size: 32px;
+            font-family: var(--font-display);
+            font-size: 42px;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -137,6 +156,7 @@
         /* Стиль для заглушек разработки */
         .status-tag {
             display: inline-block;
+            font-family: var(--font-mono);
             background: rgba(255, 159, 67, 0.1);
             color: var(--accent-color);
             padding: 4px 10px;
@@ -182,7 +202,7 @@
             <h2>Вооружение и Арсенал</h2>
             <div class="dev-panel">
                 <div class="status-tag">[ SYSTEM STATUS: IN DEVELOPMENT ]</div>
-                <p>Данный раздел наполняется базами данных ТТХ, таблицами калибров и баллистическими картами. Дополняется в будущем разработчиками по мере готовности пака вооружения Восточного и Западного блоков.</p>
+                <p>Данный раздел наполняется базами данных ТТХ, таблицами калибров и баллистическими картами. Дополняется в будущем разработчиками по мере готовности арсенала для фракций СНГ, ЧВК и НАТО.</p>
             </div>
         </div>
 
@@ -191,13 +211,13 @@
             <h2>Тактическая Карта</h2>
             <div class="dev-panel">
                 <div class="status-tag">[ SECURE LINK: LOADING... ]</div>
-                <p>Сектор проведения сессионных операций засекречен штабом. Раздел со спутниковыми снимками, координатной сеткой и зонами захвата дополняется в будущем разработчиками. Следите за брифингами.</p>
+                <p>Сектор проведения сессионных операций засекречен штабом. Раздел со спутниковыми снимками, координатной сеткой и зонами захвата дополняется в будущем разработчиками. Следите за брифингами фракций.</p>
             </div>
         </div>
 
         <!-- Вкладка: FAQ -->
         <div class="tab-content" id="content-faq">
-            <h1>Часто задаваемые вопросы</h1>
+            <h2>Часто задаваемые вопросы</h2>
 
             <div class="faq-item">
                 <div class="question">Сервер платный? Сколько будет стоить проходка?</div>
