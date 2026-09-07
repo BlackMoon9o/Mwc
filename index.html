@@ -52,7 +52,7 @@
         }
         .logo span { color: var(--accent-color); }
 
-        /* Вкладки */
+        /* Вкладки навигации */
         .nav-tabs {
             display: flex;
             gap: 30px;
@@ -107,12 +107,12 @@
         .social-link.ds:hover { color: #5865F2; background: rgba(88, 101, 242, 0.1); border-color: #5865F2; }
         .social-link.tt:hover { color: #ff0050; background: rgba(255, 0, 80, 0.1); border-color: #ff0050; }
 
-        /* Скрытые переключатели */
+        /* Абсолютно скрытые переключатели */
         input[type="radio"].tab-switch {
-            display: none;
+            display: none !important;
         }
 
-        /* Контейнер для контента */
+        /* Основной контейнер для контента */
         .main-container {
             max-width: 1200px;
             margin: 60px auto;
@@ -124,7 +124,7 @@
             animation: fadeIn 0.4s ease forwards;
         }
 
-        /* CSS логика отображения вкладок */
+        /* ЖЕЛЕЗОБЕТОННАЯ КЛАССИЧЕСКАЯ CSS ЛОГИКА ТАБОВ */
         #tab-main:checked ~ .main-container #content-main,
         #tab-weapons:checked ~ .main-container #content-weapons,
         #tab-map:checked ~ .main-container #content-map,
@@ -141,7 +141,7 @@
             border-bottom: 2px solid var(--accent-color);
         }
 
-        /* Сетка Главного экрана */
+        /* Разметка Главной страницы */
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -233,7 +233,7 @@
 </head>
 <body>
 
-    <!-- Переключатели вынесены в самый верх body -->
+    <!-- Радиокнопки сидят строго на верхнем уровне body -->
     <input type="radio" name="site-tabs" class="tab-switch" id="tab-main" checked>
     <input type="radio" name="site-tabs" class="tab-switch" id="tab-weapons">
     <input type="radio" name="site-tabs" class="tab-switch" id="tab-map">
@@ -264,5 +264,3 @@
         </div>
     </header>
 
-    <!-- Основной контейнер -->
-<div class="main-container">
