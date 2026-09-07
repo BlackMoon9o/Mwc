@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MWC: Eastern Direction — Тактический Милсим</title>
-    <!-- Подключаем брутальные шрифты, как на скриншоте -->
+    <!-- Подключаем брутальные шрифты, как на скриншоте лаунчера -->
     <link href="https://googleapis.com" rel="stylesheet">
     
     <style>
@@ -109,7 +109,7 @@
         .social-link.ds:hover { color: #5865F2; background: rgba(88, 101, 242, 0.1); border-color: #5865F2; }
         .social-link.tt:hover { color: #ff0050; background: rgba(255, 0, 80, 0.1); border-color: #ff0050; }
 
-        /* Скрытые переключатели табов */
+        /* Абсолютно скрытые переключатели табов */
         input[type="radio"].tab-switch {
             display: none !important;
         }
@@ -126,7 +126,7 @@
             animation: fadeIn 0.4s ease forwards;
         }
 
-        /* Логика переключения вкладок через радиокнопки на корневом уровне body */
+        /* Надежная CSS логика переключения вкладок через радиокнопки */
         #tab-main:checked ~ .main-container #content-main,
         #tab-weapons:checked ~ .main-container #content-weapons,
         #tab-map:checked ~ .main-container #content-map,
@@ -143,7 +143,7 @@
             border-bottom: 2px solid var(--accent-color);
         }
 
-        /* --- СЕТКА ДЛЯ ГЛАВНОГО ЭКРАНА (Точь-в-точь как на скрине) --- */
+        /* --- СЕТКА ДЛЯ ГЛАВНОГО ЭКРАНА --- */
         .hero-grid {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
@@ -156,7 +156,7 @@
             .hero-grid { grid-template-columns: 1fr; gap: 40px; }
         }
 
-        /* Левая часть: Скачивание */
+        /* Левая часть: Описание и кнопка */
         .hero-left h1 {
             font-family: var(--font-display);
             font-size: 82px;
@@ -167,12 +167,21 @@
             letter-spacing: -1px;
         }
 
-        .hero-left p {
+        .hero-left .description {
             color: var(--text-muted);
             font-size: 15px;
             line-height: 1.6;
             margin-bottom: 35px;
-            max-width: 460px;
+            max-width: 480px;
+        }
+
+        .hero-left .description p {
+            margin-bottom: 15px;
+        }
+
+        .hero-left .description span {
+            color: var(--accent-color);
+            font-weight: 600;
         }
 
         .btn-download {
@@ -264,7 +273,7 @@
         }
         .step-text span { color: var(--accent-color); font-weight: 600; }
 
-        /* --- НИЖНЯЯ СЕТКА ХАРАКТЕРИСТИК (Как на скрине) --- */
+        /* --- НИЖНЯЯ СЕТКА ХАРАКТЕРИСТИК --- */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -300,7 +309,7 @@
             line-height: 1.6;
         }
 
-        /* --- БЛОК СИСТЕМНЫХ ТРЕБОВАНИЙ (В самом низу) --- */
+        /* --- БЛОК СИСТЕМНЫХ ТРЕБОВАНИЙ --- */
         .requirements-box {
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             padding-top: 40px;
@@ -319,11 +328,4 @@
 
         .req-row {
             display: flex;
-            gap: 40px;
-            font-size: 14px;
-        }
-
-        .req-title {
-            font-family: var(--font-display);
-            text-transform: uppercase;
-color: var(--accent-color);letter-spacing: 1px;min-width: 100px;}.req-value {color: var(--text-muted);}/* Стили информационных панелей для вкладок Оружие/Карта/FAQ */.info-panel {background: var(--panel-bg);padding: 40px;border: 1px solid rgba(255, 255, 255, 0.05);border-left: 4px solid var(--accent-color);backdrop-filter: blur(10px);}.info-panel h2 {font-family: var(--font-display);font-size: 28px;text-transform: uppercase;letter-spacing: 1px;margin-bottom: 20px;}.dev-notice {font-family: var(--font-mono);color: var(--accent-color);font-size: 15px;letter-spacing: 1px;text-transform: uppercase;}.faq-block {margin-bottom: 24px;}.faq-block:last-child { margin-bottom: 0; }.faq-block h3 {font-family: var(--font-display);font-size: 18px;text-transform: uppercase;color: var(--accent-color);margin-bottom: 6px;}.faq-block p {color: var(--text-muted);font-size: 14px;line-height: 1.6;}@keyframes fadeIn {from { opacity: 0; transform: translateY(10px); }to { opacity: 1; transform: translateY(0); }}
+gap: 40px;font-size: 14px;}.req-title {font-family: var(--font-display);text-transform: uppercase;color: var(--accent-color);letter-spacing: 1px;min-width: 100px;}.req-value {color: var(--text-muted);}/* Стили панелей информации для Оружия/Карты/FAQ */.info-panel {background: var(--panel-bg);padding: 40px;border: 1px solid rgba(255, 255, 255, 0.05);border-left: 4px solid var(--accent-color);backdrop-filter: blur(10px);}.info-panel h2 {font-family: var(--font-display);font-size: 28px;text-transform: uppercase;letter-spacing: 1px;margin-bottom: 20px;}.dev-notice {font-family: var(--font-mono);color: var(--accent-color);font-size: 15px;letter-spacing: 1px;text-transform: uppercase;}/* Сетка для вопросов */.faq-grid {display: flex;flex-direction: column;gap: 24px;margin-top: 30px;}.faq-block h3 {font-family: var(--font-display);font-size: 18px;text-transform: uppercase;color: var(--accent-color);margin-bottom: 6px;}.faq-block p {color: var(--text-muted);font-size: 14px;line-height: 1.6;}@keyframes fadeIn {from { opacity: 0; transform: translateY(10px); }to { opacity: 1; transform: translateY(0); }}
