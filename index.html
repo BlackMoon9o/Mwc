@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MWC: Eastern Direction — Тактический Милсим</title>
-    <!-- Подключаем брутальные шрифты, как на скриншоте лаунчера -->
+    <!-- Подключаем шрифты -->
     <link href="https://googleapis.com" rel="stylesheet">
     
     <style>
@@ -32,6 +32,11 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            /* Лесной фон, как на скриншоте лаунчера */
+            background-image: linear-gradient(rgba(13, 14, 17, 0.75), rgba(13, 14, 17, 0.9)), url('https://unsplash.com');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         /* Шапка сайта */
@@ -78,7 +83,6 @@
             color: var(--text-main);
         }
 
-        /* Класс для активной вкладки */
         .tab-btn.active {
             color: var(--text-main);
             border-bottom: 2px solid var(--accent-color);
@@ -127,12 +131,11 @@
             animation: fadeIn 0.4s ease forwards;
         }
 
-        /* Класс активного контента */
         .tab-content.active {
             display: block;
         }
 
-        /* --- СЕТКА ДЛЯ ГЛАВНОГО ЭКРАНА --- */
+        /* --- СЕТКА ДЛЯ ГЛАВНОГО ЭКРАНА (Точь-в-точь как на скрине) --- */
         .hero-grid {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
@@ -145,7 +148,6 @@
             .hero-grid { grid-template-columns: 1fr; gap: 40px; }
         }
 
-        /* Левая часть: Описание и кнопка */
         .hero-left h1 {
             font-family: var(--font-display);
             font-size: 72px;
@@ -207,7 +209,7 @@
         }
         .alt-version:hover { color: #fff; border-color: #fff; }
 
-        /* Правая часть: Блок «Как начать» */
+        /* Блок «Как начать» */
         .steps-panel {
             background: var(--panel-bg);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -333,18 +335,10 @@
             color: var(--text-muted);
         }
 
-        /* Стили панелей информации для Оружия/Карты/FAQ */
+        /* Панели информации для Оружия/Карты/FAQ */
         .info-panel {
             background: var(--panel-bg);
             padding: 40px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-left: 4px solid var(--accent-color);
-            backdrop-filter: blur(10px);
-        }
-
-        .info-panel h2 {
-            font-family: var(--font-display);
-            font-size: 28px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-margin-bottom: 20px;}.dev-notice {font-family: var(--font-mono);color: var(--accent-color);font-size: 15px;letter-spacing: 1px;text-transform: uppercase;}/* Сетка для вопросов */.faq-grid {display: flex;flex-direction: column;gap: 24px;margin-top: 30px;}.faq-block h3 {font-family: var(--font-display);font-size: 18px;text-transform: uppercase;color: var(--accent-color);margin-bottom: 6px;}.faq-block p {color: var(--text-muted);font-size: 14px;line-height: 1.6;}@keyframes fadeIn {from { opacity: 0; transform: translateY(10px); }to { opacity: 1; transform: translateY(0); }}
+backdrop-filter: blur(10px);}.info-panel h2 {font-family: var(--font-display);font-size: 28px;text-transform: uppercase;letter-spacing: 1px;margin-bottom: 20px;}.dev-notice {font-family: var(--font-mono);color: var(--accent-color);font-size: 15px;letter-spacing: 1px;text-transform: uppercase;}/* Сетка для вопросов */.faq-grid {display: flex;flex-direction: column;gap: 24px;margin-top: 30px;}.faq-block h3 {font-family: var(--font-display);font-size: 18px;text-transform: uppercase;color: var(--accent-color);margin-bottom: 6px;}.faq-block p {color: var(--text-muted);font-size: 14px;line-height: 1.6;}@keyframes fadeIn {from { opacity: 0; transform: translateY(10px); }to { opacity: 1; transform: translateY(0); }}
