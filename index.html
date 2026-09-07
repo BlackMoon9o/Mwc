@@ -29,7 +29,6 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: var(--font-sans);
-            /* Атмосферный фон (затемненный тактический скриншот) */
             background-image: linear-gradient(rgba(11, 12, 16, 0.85), rgba(11, 12, 16, 0.95)), url('https://unsplash.com');
             background-size: cover;
             background-position: center;
@@ -63,7 +62,7 @@
             display: flex;
             gap: 25px;
             margin-left: 40px;
-            margin-right: auto; /* Сдвигает кнопку ТГ в самый правый край */
+            margin-right: auto;
         }
 
         .tab-label {
@@ -118,7 +117,7 @@
             animation: fadeIn 0.4s ease forwards;
         }
 
-        /* Переключение видимости вкладок без JS */
+        /* НАДЁЖНОЕ ПЕРЕКЛЮЧЕНИЕ ТАБОВ через селектор ~ */
         #tab-main:checked ~ .main-container #content-main,
         #tab-weapons:checked ~ .main-container #content-weapons,
         #tab-map:checked ~ .main-container #content-map,
@@ -241,7 +240,7 @@
             line-height: 1.5;
         }
 
-        /* Нижние карточки плюсов */
+        /* Карточки плюсов */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -283,7 +282,7 @@
             line-height: 1.6;
         }
 
-        /* --- Стили информационных блоков --- */
+        /* --- Стили информационных панелей --- */
         .info-panel {
             background: var(--panel-bg);
             backdrop-filter: blur(10px);
@@ -319,8 +318,13 @@
             line-height: 1.6;
         }
 
-        /* Таблица оружия */
         .weapons-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 14px;
+            text-align: left;
+        }
+
+        .weapons-table th {
+            font-family: var(--font-display);
+            text-transform: uppercase;
