@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MWC: Eastern Direction — Тактический Милсим</title>
-    <!-- Подключаем шрифты -->
+    <!-- Подключаем брутальный шрифт в стиле милитари-HUD -->
     <link href="https://googleapis.com" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #0b0c10;
-            --panel-bg: rgba(20, 22, 29, 0.7);
+            --bg-color: #0d0e11;
+            --panel-bg: #14161d;
             --accent-color: #ff9f43;
             --text-main: #ffffff;
             --text-muted: #8a8f98;
@@ -29,20 +29,16 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: var(--font-sans);
-            background-image: linear-gradient(rgba(11, 12, 16, 0.85), rgba(11, 12, 16, 0.95)), url('https://unsplash.com');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             min-height: 100vh;
         }
 
-        /* Навигационная панель сверху */
+        /* Шапка сайта */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            background: rgba(20, 22, 29, 0.9);
+            background: rgba(20, 22, 29, 0.8);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
         }
@@ -53,16 +49,13 @@
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            white-space: nowrap;
         }
         .logo span { color: var(--accent-color); }
 
-        /* Вкладки переключения сверху */
+        /* Табы / Вкладки на чистом CSS */
         .nav-tabs {
             display: flex;
-            gap: 25px;
-            margin-left: 40px;
-            margin-right: auto;
+            gap: 30px;
         }
 
         .tab-label {
@@ -72,9 +65,11 @@
             letter-spacing: 1px;
             color: var(--text-muted);
             cursor: pointer;
-            transition: color 0.3s, border-color 0.3s;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
             padding-bottom: 4px;
-            border-bottom: 2px solid transparent;
         }
 
         .tab-label:hover {
@@ -91,66 +86,55 @@
             border-radius: 4px;
             text-decoration: none;
             letter-spacing: 1px;
-            transition: background 0.3s;
-            white-space: nowrap;
+            transition: transform 0.2s, background 0.3s;
         }
 
         .btn-action:hover {
             background: #e68a2e;
+            transform: translateY(-1px);
         }
 
-        /* Скрываем радио-кнопки */
+        /* Переключатели вкладок (скрытые) */
         input[type="radio"] {
             display: none;
         }
 
-        /* Контейнер для вкладок */
+        /* Контейнер для контента */
         .main-container {
             max-width: 1200px;
             margin: 60px auto;
             padding: 0 20px;
         }
 
-        /* Прячем все вкладки по умолчанию */
         .tab-content {
             display: none;
             animation: fadeIn 0.4s ease forwards;
         }
 
-        /* ИСПРАВЛЕНО: Теперь переключение работает жестко по ID */
+        /* Логика показа табов */
         #tab-main:checked ~ .main-container #content-main,
-        #tab-weapons:checked ~ .main-container #content-weapons,
-        #tab-map:checked ~ .main-container #content-map,
-        #tab-donate:checked ~ .main-container #content-donate,
         #tab-faq:checked ~ .main-container #content-faq,
-        #tab-questions:checked ~ .main-container #content-questions {
-            display: block !important;
+        #tab-weapons:checked ~ .main-container #content-weapons,
+        #tab-map:checked ~ .main-container #content-map {
+            display: block;
         }
 
-        /* Подсветка активной вкладки в хэдере */
+        /* Активные стили для меню */
         #tab-main:checked ~ header label[for="tab-main"],
-        #tab-weapons:checked ~ header label[for="tab-weapons"],
-        #tab-map:checked ~ header label[for="tab-map"],
-        #tab-donate:checked ~ header label[for="tab-donate"],
         #tab-faq:checked ~ header label[for="tab-faq"],
-        #tab-questions:checked ~ header label[for="tab-questions"] {
+        #tab-weapons:checked ~ header label[for="tab-weapons"],
+        #tab-map:checked ~ header label[for="tab-map"] {
             color: var(--text-main);
             border-bottom: 2px solid var(--accent-color);
         }
 
-        /* --- Стили Главной страницы --- */
+        /* Сетка Главного экрана */
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
-            align-items: start;
+            align-items: center;
             margin-bottom: 60px;
-        }
-
-        @media (max-width: 900px) {
-            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-            header { flex-direction: column; gap: 15px; text-align: center; }
-            .nav-tabs { margin: 10px 0; justify-content: center; }
         }
 
         .hero-left h1 {
@@ -170,162 +154,79 @@
             max-width: 450px;
         }
 
-        .btn-download {
-            display: inline-block;
-            background: var(--accent-color);
-            color: #000;
-            font-family: var(--font-display);
-            font-size: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 16px 40px;
-            border-radius: 4px;
-            text-decoration: none;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(255, 159, 67, 0.2);
-            transition: background 0.3s;
-        }
-
-        .btn-download:hover { background: #e68a2e; }
-
-        /* Блок «Как начать» */
-        .steps-panel {
+        /* Стили для остальных вкладок (заглушки) */
+        .placeholder-content {
             background: var(--panel-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-left: 4px solid var(--accent-color);
-            padding: 40px;
-            backdrop-filter: blur(5px);
-        }
-
-        .steps-panel h2 {
-            font-family: var(--font-display);
-            font-size: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .steps-panel h2 span {
-            font-family: var(--font-mono);
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        .step-item {
-            display: flex;
-            gap: 25px;
-            margin-bottom: 25px;
-        }
-        .step-item:last-child { margin-bottom: 0; }
-
-        .step-num {
-            font-family: var(--font-mono);
-            font-size: 24px;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        .step-text h3 {
-            font-family: var(--font-display);
-            font-size: 18px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-
-        .step-text p {
-            color: var(--text-muted);
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        /* Карточки плюсов */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .feat-card {
-            background: rgba(20, 22, 29, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-top: 3px solid var(--accent-color);
-            padding: 30px 24px;
-            backdrop-filter: blur(5px);
-            transition: transform 0.3s, background 0.3s;
-        }
-        .feat-card:hover {
-            transform: translateY(-5px);
-            background: rgba(20, 22, 29, 0.8);
-        }
-
-        .feat-icon {
-            color: var(--accent-color);
-            font-size: 22px;
-            margin-bottom: 15px;
-            font-family: var(--font-mono);
-            font-weight: bold;
-        }
-
-        .feat-card h4 {
-            font-family: var(--font-display);
-            text-transform: uppercase;
-            font-size: 18px;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .feat-card p {
-            color: var(--text-muted);
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        /* --- Стили информационных панелей --- */
-        .info-panel {
-            background: var(--panel-bg);
-            backdrop-filter: blur(10px);
             padding: 40px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .info-panel h2 {
-            font-family: var(--font-display);
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-            letter-spacing: 1px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+    </style>
+</head>
+<body>
 
-        .faq-item {
-            margin-bottom: 25px;
-        }
-        .faq-item:last-child { margin-bottom: 0; }
+    <!-- Скрытые переключатели для CSS-табов -->
+    <input type="radio" name="site-tabs" id="tab-main" checked>
+    <input type="radio" name="site-tabs" id="tab-faq">
+    <input type="radio" name="site-tabs" id="tab-weapons">
+    <input type="radio" name="site-tabs" id="tab-map">
 
-        .faq-item h3 {
-            font-family: var(--font-display);
-            color: var(--accent-color);
-            text-transform: uppercase;
-            font-size: 18px;
-            margin-bottom: 6px;
-        }
+    <!-- Хедер сайта -->
+    <header>
+        <div class="logo">MWC: <span>Eastern Direction</span></div>
+        
+        <nav class="nav-tabs">
+            <label for="tab-main" class="tab-label">Главная</label>
+            <label for="tab-faq" class="tab-label">FAQ</label>
+            <label for="tab-weapons" class="tab-label">Оружие</label>
+            <label for="tab-map" class="tab-label">Карта</label>
+        </nav>
 
-        .faq-item p {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.6;
-        }
+        <a href="https://t.me" class="btn-action">Вступай в ТГ</a>
+    </header>
 
-        .weapons-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-            text-align: left;
-        }
+    <!-- Основной контейнер -->
+    <div class="main-container">
+        
+        <!-- Вкладка 1: Главная -->
+        <div class="tab-content" id="content-main">
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <h1>В БОЙ</h1>
+                    <p>Добро пожаловать на тактический Милсим-сервер. Реалистичная баллистика, жесткая субординация и масштабные операции без лишних компромиссов.</p>
+                </div>
+            </div>
+        </div>
 
-        .weapons-table th {
-            font-family: var(--font-display);
-            text-transform: uppercase;
-color: var(--accent-color);padding: 12px 8px;border-bottom: 2px solid rgba(255, 255, 255, 0.1);}.weapons-table td {padding: 12px 8px;border-bottom: 1px solid rgba(255, 255, 255, 0.05);}.weapon-name {color: #fff;font-weight: bold;}.weapon-mono {font-family: var(--font-mono);}.map-wrapper {max-width: 800px;margin: 20px auto 0;border: 2px solid rgba(255, 159, 67, 0.3);padding: 5px;background: #000;}.map-wrapper img {width: 100%;height: auto;display: block;filter: grayscale(20%) contrast(1.1);}@keyframes fadeIn {from { opacity: 0; transform: translateY(10px); }to { opacity: 1; transform: translateY(0); }}
+        <!-- Вкладка 2: FAQ -->
+        <div class="tab-content" id="content-faq">
+            <div class="placeholder-content">
+                <h2>Часто задаваемые вопросы (FAQ)</h2>
+                <p style="color: var(--text-muted); margin-top: 15px;">Здесь будет твой текст вопросов и ответов...</p>
+            </div>
+        </div>
+
+        <!-- Вкладка 3: Оружие -->
+        <div class="tab-content" id="content-weapons">
+            <div class="placeholder-content">
+                <h2>Вооружение и ТТХ</h2>
+                <p style="color: var(--text-muted); margin-top: 15px;">Здесь будут таблицы с калибрами и уроном...</p>
+            </div>
+        </div>
+
+        <!-- Вкладка 4: Карта -->
+        <div class="tab-content" id="content-map">
+            <div class="placeholder-content">
+                <h2>Тактическая карта операций</h2>
+                <p style="color: var(--text-muted); margin-top: 15px;">Здесь будет изображение или сетка карты...</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
