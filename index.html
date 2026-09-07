@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MWC: Eastern Direction — Вопросы и ответы</title>
+    <title>MWC: Eastern Direction — Тактический Милсим</title>
     <style>
         :root {
             --bg-color: #0d0e11;
@@ -28,7 +28,7 @@
             flex-direction: column;
         }
 
-        /* Наша верхняя тактическая шапка */
+        /* Верхняя тактическая шапка */
         header {
             display: flex;
             justify-content: space-between;
@@ -52,26 +52,47 @@
             gap: 30px;
         }
 
-        /* Стиль для нашей первой кнопки меню */
+        /* Стиль для кнопок меню */
         .tab-btn {
             font-size: 14px;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--text-main);
+            color: var(--text-muted);
             padding-bottom: 4px;
             border: none;
             background: none;
-            border-bottom: 2px solid var(--accent-color); /* Сразу подсвечена, так как пока одна */
+            border-bottom: 2px solid transparent;
             cursor: pointer;
+            transition: color 0.3s;
         }
 
-        /* Контейнер для вопросов (центрирует контент) */
+        .tab-btn:hover {
+            color: var(--text-main);
+        }
+
+        /* Подсвечиваем активную вкладку */
+        .tab-btn.active {
+            color: var(--text-main);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        /* Контейнер для контента */
         .main-container {
             max-width: 800px;
             width: 100%;
             margin: 60px auto;
             padding: 0 20px;
+        }
+
+        /* Скрываем вкладки по умолчанию */
+        .tab-content {
+            display: none;
+        }
+
+        /* Показываем только активную вкладку */
+        .tab-content.active {
+            display: block;
         }
 
         h1 {
@@ -103,59 +124,93 @@
             font-size: 15px;
             line-height: 1.5;
         }
+
+        /* Стиль приветственного текста на главной */
+        .welcome-text {
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Вставляем верхнюю панель -->
+    <!-- Шапка сайта -->
     <header>
         <div class="logo">MWC: <span>Eastern Direction</span></div>
         <nav class="nav-tabs">
-            <button class="tab-btn">FAQ</button>
+            <button class="tab-btn active" onclick="openTab('content-main', this)">Главная</button>
+            <button class="tab-btn" onclick="openTab('content-faq', this)">FAQ</button>
         </nav>
     </header>
 
-    <!-- Основной контент сайта ниже шапки -->
+    <!-- Основной контент сайта -->
     <div class="main-container">
 
-        <h1>Часто задаваемые вопросы</h1>
-
-        <div class="faq-item">
-            <div class="question">Сервер платный? Сколько будет стоить проходка?</div>
-            <div class="answer">Нет, сервер полностью бесплатный.</div>
+        <!-- Контент вкладки: Главная -->
+        <div class="tab-content active" id="content-main">
+            <h1>Главная</h1>
+            <div class="welcome-text">Присоединяйся к нам!</div>
         </div>
 
-        <div class="faq-item">
-            <div class="question">Какие фракции будут?</div>
-            <div class="answer">Пока что неизвестно, планируется ЧВК, СНГ, НАТО.</div>
-        </div>
+        <!-- Контент вкладки: FAQ -->
+        <div class="tab-content" id="content-faq">
+            <h1>Часто задаваемые вопросы</h1>
 
-        <div class="faq-item">
-            <div class="question">Где скачать сборку?</div>
-            <div class="answer">Нигде, эта сборка делается для сервера.</div>
-        </div>
+            <div class="faq-item">
+                <div class="question">Сервер платный? Сколько будет стоить проходка?</div>
+                <div class="answer">Нет, сервер полностью бесплатный.</div>
+            </div>
 
-        <div class="faq-item">
-            <div class="question">Суть игры?</div>
-            <div class="answer">Захват зон в стилистике милсим Arma + Squad.</div>
-        </div>
+            <div class="faq-item">
+                <div class="question">Какие фракции будут?</div>
+                <div class="answer">Пока что неизвестно, планируется ЧВК, СНГ, НАТО.</div>
+            </div>
 
-        <div class="faq-item">
-            <div class="question">Будет лаунчер?</div>
-            <div class="answer">Да, будет. Надеемся, что к запуску уже сделаем все!</div>
-        </div>
+            <div class="faq-item">
+                <div class="question">Где скачать сборку?</div>
+                <div class="answer">Нигде, эта сборка делается для сервера.</div>
+            </div>
 
-        <div class="faq-item">
-            <div class="question">Как вам помочь?</div>
-            <div class="answer">Заходите в дискорд, мы почти каждый день сидим в голосовом канале.</div>
-        </div>
+            <div class="faq-item">
+                <div class="question">Суть игры?</div>
+                <div class="answer">Захват зон в стилистике милсим Arma + Squad.</div>
+            </div>
 
-        <div class="faq-item">
-            <div class="question">Есть ли ограничения по возрасту (набор в проект)?</div>
-            <div class="answer">Строгого ограничения нет, но мы ценим адекватность, умение слушать командира и соблюдать субординацию во время сессий. Каждый боец проходит индивидуальное собеседование.</div>
+            <div class="faq-item">
+                <div class="question">Будет лаунчер?</div>
+                <div class="answer">Да, будет. Надеемся, что к запуску уже сделаем все!</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">Как вам помочь?</div>
+                <div class="answer">Заходите в дискорд, мы почти каждый день сидим в голосовом канале.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">Есть ли ограничения по возрасту (набор в проект)?</div>
+                <div class="answer">Строгого ограничения нет, но мы ценим адекватность, умение слушать командира и соблюдать субординацию во время сессий. Каждый боец проходит индивидуальное собеседование.</div>
+            </div>
         </div>
 
     </div>
+
+    <!-- Чистый скрипт навигации без опечаток -->
+    <script>
+        function openTab(tabId, btn) {
+            /* Прячем все вкладки */
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            /* Сбрасываем подсветку со всех кнопок */
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            /* Показываем нужную вкладку и подсвечиваем кликнутую кнопку */
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
